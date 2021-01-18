@@ -17,6 +17,32 @@ The best performing model was automl with accuracy of XXXX and is Voting Ensembl
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
+
+**1. Creating Compute cluster :**  Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+**2. Setting up train.py script :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+* **Data Import :**
+Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+
+* **Clean and Encode data :**
+Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+
+* **Split Data :**
+Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+
+**3. Creating HyperDrive Configuration :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+**4. Submit Hyperdrive run :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+**5. Retrieve best run :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+
+**6. Save model :**
+
 **What are the benefits of the parameter sampler you chose?**
 
 **What are the benefits of the early stopping policy you chose?**
