@@ -76,15 +76,15 @@ Use the joblib import to save the trained model that creates a new file with spe
 ## Pipeline comparison
 **Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?**
 
+The hyperdrive optimized logistic regression model produced an accuracy of 0.91024462 and AutoML model is with accuracy of 0.91547381 from Voting Ensemble algorithm. The difference in accuracy is 0.00522919. 
+
+The differences in architecture are hyperdrive run requires manual tuning of hyperparameters by running through different hyperparameter values and choose the best hyperparameter that outperforms the other. Whereas, automl run tunes the hyperparameters automatically that results in producing best hyperparameters for that run and also automates model selection.
+
+Yes, there was a slight difference in accuracy. As AutoML model processes different machine learning algorithms and Voting Ensemble being ensemble algorithm that combines predictions of multiple models could be the reason for difference in accuracy and better model performance.
+
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
 ## Proof of cluster clean up
-**If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
-**Image of cluster marked for deletion**
-
-
-
-**Here is the related screenshot:
 
 ![capture](images/screenshot(76).png)
