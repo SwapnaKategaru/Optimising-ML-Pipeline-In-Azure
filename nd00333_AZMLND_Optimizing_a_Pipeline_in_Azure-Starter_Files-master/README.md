@@ -29,3 +29,9 @@ This model is then compared to an Azure AutoML run.
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
 **Image of cluster marked for deletion**
+
+
+
+**Here is the related screenshot:
+
+![capture] (https://github.com/[SwapnaKategaru]/[Project1]/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files-master/[main]/images/Screenshot(86).png?raw=true)
