@@ -50,6 +50,8 @@ SKLearn class is used to create a estimator to use with train.py script that spe
 
 **4. Submit Hyperdrive run :** Submission of hyperdriveconfig to run the experiment. View progress of run through *RunDetails* widget.
 
+![image](images/screenshot2.png)
+
 **5. Retrieve best run :** 
 Use *get_best_run_by_primary_metric* method for hyperdrive run to choose best hyperparameters of model and retrieve metrics of run.
 
@@ -100,4 +102,4 @@ Yes, there was a slight difference in accuracy. As AutoML model processes differ
 
 ## Proof of cluster clean up
 
-![capture](images/screenshot(76).png)
+![image](images/screenshot1.png)
