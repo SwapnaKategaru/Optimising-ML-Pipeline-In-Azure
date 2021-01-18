@@ -16,32 +16,45 @@ The best performing model was automl with accuracy of XXXX and is Voting Ensembl
 
 ## Scikit-learn Pipeline
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
+The pipeline 
 
+### Pipeline architecture of HyperDrive Experiment
 
-<u> **1. Creating Compute cluster :** </u>  Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
-Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+Create a workspace and experiment objects to start building a hyperdrive pipeline in jupyter notebook.
 
-**2. Setting up train.py script :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+**1. Create a Compute cluster :** Training a model requires virtual machine in which experiment is run through creating compute cluster with required vm priority - Low priority, vm type - CPU, vm size - Standard_D2_v2 and max_nodes - 4.
 
+**2. Set up train.py script :** This python script file is used to run the hyperdrive experiment that includes custom coded Logistic Regression model using sklearn. 
 * **Data Import :**
-Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
-
+Create tabular dataset of bankmarketing_csv file by importing of data using azureml TabularDatasetFactory class.
 
 * **Clean and Encode data :**
-Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
-
+A clean_data function is used to replace or clean the missing values in dataset and is subjected to one hot encoding where categorical values are converted to numbers.
 
 * **Split Data :**
-Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+Split of data into train and test subsets is done using train_test_split function with specified random state of split(random_state=42) and size of test set(test_size=0.33).
 
+* **Script arguments :**
+LogisticRegression class is used to regularise by specifying parameters like *Regularization strength* and *Maximum number of iterations*.  
 
-**3. Creating HyperDrive Configuration :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+**3. Create HyperDrive configuration :** Creating a configuration for hyperdrive run to execute experiment with specified parameters like maximum total no.of runs to create and execute concurrently, name of the primary metric and primary metric goal is defined with following parameters:
 
-**4. Submit Hyperdrive run :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+* **Parameter sampler :**
+Specifying parameter sampler using RandomParameterSampling class that enables random sampling over a hyperparameter search space from a set of discrete or continuous values(C and max_iter) 
 
-**5. Retrieve best run :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+* **Policy :**
+Specifies early termintaion policy for early stopping with required amount of evaluation interval, slack factor and delay_evaluation.
+
+* **Estimator :**
+SKLearn class is used to create a estimator to use with train.py script that specifies source directory, compute target, vm size, vm priority, entry script file path.
+
+**4. Submit Hyperdrive run :** Submission of hyperdriveconfig to run the experiment. View progress of run through RunDetails widget.
+
+**5. Retrieve best run :** 
+Use get_best_run_by_primary_metric method for hyperdrive run to choose best hyperparameters of model and retrieve metrics of run.
 
 **6. Save model :**
+Use the joblib import to save the trained model that creates a new file with specified name for model in outputs directory.
 
 **What are the benefits of the parameter sampler you chose?**
 
