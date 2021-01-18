@@ -7,7 +7,7 @@ This model is then compared to an Azure AutoML run.
 
 ## Summary
 
-The dataset used in this project is Bankmarketing_train.csv that contains data of clients collected through marketing campaigns held by banking institution and we seek to predict, if client subscribes to a term deposit or not i.e.,prediction of target variable(y) with a value yes/no. 
+The dataset used in this project is *Bankmarketing_train.csv* that contains data of clients collected through marketing campaigns held by banking institution and we seek to predict, if client subscribes to a term deposit or not i.e.,prediction of target variable(y) with a value yes/no. 
 * No.of clients : 32951
 * Input variables : 20
 * Output/target variable : y
@@ -18,23 +18,21 @@ The best performing model was AutoML with accuracy of 0.9154738177206015 by Voti
 
 ## Scikit-learn Pipeline
 
-**Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
-
 ### Pipeline architecture of HyperDrive Experiment
 
 Create a workspace and experiment objects to start building a hyperdrive pipeline in jupyter notebook.
 
-**1. Create a Compute cluster :** Training a model requires virtual machine in which experiment is run through creating compute cluster with required vm priority - Low priority, vm type - CPU, vm size - Standard_D2_v2 and max_nodes - 4.
+**1. Create a Compute cluster :** Training a model requires virtual machine in which experiment is run through creating compute cluster with required *vm priority - Low priority, vm type - CPU, vm size - Standard_D2_v2* and *max_nodes - 4*.
 
 **2. Set up train.py script :** This python script file is used to run the hyperdrive experiment that includes custom coded Logistic Regression model using sklearn. 
 * **Data Import :**
-Create tabular dataset of bankmarketing_csv file by importing of data using azureml TabularDatasetFactory class.
+Create tabular dataset of bankmarketing_csv file by importing of data using azureml *TabularDatasetFactory* class.
 
 * **Clean and Encode data :**
-A clean_data function is used to replace or clean the missing values in dataset and is subjected to one hot encoding where categorical values are converted to numbers.
+A *clean_data* function is used to replace or clean the missing values in dataset and is subjected to one hot encoding where categorical values are converted to numbers.
 
 * **Split Data :**
-Split of data into train and test subsets is done using train_test_split function with specified random state of split(random_state=42) and size of test set(test_size=0.33).
+Split of data into train and test subsets is done using *train_test_split* function with specified random state of split(random_state=42) and size of test set(test_size=0.33).
 
 * **Script arguments :**
 LogisticRegression class is used to regularise by specifying parameters like *Regularization strength* and *Maximum number of iterations*.  
@@ -42,30 +40,30 @@ LogisticRegression class is used to regularise by specifying parameters like *Re
 **3. Create HyperDrive configuration :** Creating a configuration for hyperdrive run to execute experiment with specified parameters like maximum total no.of runs to create and execute concurrently, name of the primary metric and primary metric goal is defined along with following hyperparameters:
 
 * **Parameter sampler :**
-Specifying parameter sampler using RandomParameterSampling class that enables random sampling over a hyperparameter search space from a set of discrete or continuous values(C and max_iter). 
+Specifying parameter sampler using *RandomParameterSampling* class that enables random sampling over a hyperparameter search space from a set of discrete or continuous values(*C* and *max_iter*). 
 
 * **Policy :**
-Specifies early termintaion policy for early stopping with required amount of evaluation interval, slack factor and delay_evaluation.
+Specifies early termintaion policy for early stopping with required amount of *evaluation interval*, *slack factor* and *delay_evaluation*.
 
 * **Estimator :**
 SKLearn class is used to create a estimator to use with train.py script that specifies source directory, compute target, vm size, vm priority, entry script file path.
 
-**4. Submit Hyperdrive run :** Submission of hyperdriveconfig to run the experiment. View progress of run through RunDetails widget.
+**4. Submit Hyperdrive run :** Submission of hyperdriveconfig to run the experiment. View progress of run through *RunDetails* widget.
 
 **5. Retrieve best run :** 
-Use get_best_run_by_primary_metric method for hyperdrive run to choose best hyperparameters of model and retrieve metrics of run.
+Use *get_best_run_by_primary_metric* method for hyperdrive run to choose best hyperparameters of model and retrieve metrics of run.
 
 **6. Save model :**
-Use the joblib import to save the trained model that creates a new file with specified name for model in outputs directory.
+Use the *joblib* import to save the trained model that creates a new file with specified name for model in outputs directory.
 
 
 ## Benefits of Random Parameter Sampler
 
-* Random parameter sampling supports both discrete and continuous hyperparameter values.
+* *Random parameter sampling* supports both discrete and continuous hyperparameter values.
 * Helps to identify low performing runs and thereby helps in early termination.
 * Low bias in random sampling as hyperparameter values are randomly selected from the defined search space and have equal probability of being selected.
-* choice function helps to sample from only specified set of values.
-* uniform function helps to maintain uniform distribution of samples taken.
+* *choice* function helps to sample from only specified set of values.
+* *uniform* function helps to maintain uniform distribution of samples taken.
 
 ## Benefits of Bandit Policy 
 
@@ -74,9 +72,8 @@ Use the joblib import to save the trained model that creates a new file with spe
 * This policy is based on slack factor and evaluation interval.
 
 ## AutoML
-**In 1-2 sentences, describe the model and hyperparameters generated by AutoML.**
 
-Voting Ensemble algorithm is generated by AutoML as the best model. Ensembled algorithms of this model includes XGBoostClassifier and LightGBM. Best ensemble weight of XGBoostClassifier is 0.14285714285714285 and best individual pipeline score is 0.9142054720057982.
+Voting Ensemble algorithm is generated by AutoML as the best model. Ensembled algorithms of this model includes *XGBoostClassifier* and *LightGBM*. Best ensemble weight of XGBoostClassifier is 0.14285714285714285 and best individual pipeline score is 0.9142054720057982.
 
 A prefitted soft voting classifier is applied where every individual classifier provides a probability value, the predictions are weighted according to classifier's importance that are summed up and greatest sum of weighted probabilities wins the vote.
 
@@ -97,9 +94,9 @@ Yes, there was a slight difference in accuracy. As AutoML model processes differ
 
 ## Future work: Some areas of improvement for future experiments.
 
-* Use Dedicated virtual machine instead of low-priority as these vm do not guarantee the compute nodes.
-* Enable deep learning while specifying classification task type for autoML as it applies default techniques depending on the number of rows present in training dataset provided and applies train/validation split with required no.of cross validations without explicitly being provided.
-* Use iterations parameter of AutoMLConfig Class that enables use of different algorithms and parameter combinations to test during an automated ML experiment and increase experiment timeout minutes.
+* Use *Dedicated* virtual machine instead of low-priority as these vm do not guarantee the compute nodes.
+* *Enable deep learning* while specifying classification task type for autoML as it applies default techniques depending on the number of rows present in training dataset provided and applies train/validation split with required no.of cross validations without explicitly being provided.
+* Use *iterations* parameter of AutoMLConfig Class that enables use of different algorithms and parameter combinations to test during an automated ML experiment and increase experiment timeout minutes.
 
 ## Proof of cluster clean up
 
