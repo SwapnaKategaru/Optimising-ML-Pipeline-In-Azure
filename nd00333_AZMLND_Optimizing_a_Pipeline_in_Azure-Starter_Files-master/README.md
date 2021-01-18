@@ -18,7 +18,7 @@ The best performing model was automl with accuracy of XXXX and is Voting Ensembl
 **Explain the pipeline architecture, including data, hyperparameter tuning, and classification algorithm.**
 
 
-**1. Creating Compute cluster :**  Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
+<u> **1. Creating Compute cluster :** </u>  Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
 Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
 
 **2. Setting up train.py script :** Compare the two models and their performance. What are the differences in accuracy? In architecture? If there was a difference, why do you think there was one?
