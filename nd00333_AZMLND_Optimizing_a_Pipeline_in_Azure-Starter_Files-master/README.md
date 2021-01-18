@@ -34,4 +34,4 @@ This model is then compared to an Azure AutoML run.
 
 **Here is the related screenshot:
 
-![capture] (https://github.com/[SwapnaKategaru]/[Project1]/nd00333_AZMLND_Optimizing_a_Pipeline_in_Azure-Starter_Files-master/[main]/images/Screenshot(86).png?raw=true)
+![capture](images/screenshot(76).png)
